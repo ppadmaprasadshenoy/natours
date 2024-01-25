@@ -7,12 +7,16 @@ import { showAlert } from './alert';
 export const updateSettings = async (data, type) => {
     try{
         const url = type === 'password' 
-        ? 'http://127.0.0.1:3000/api/v1/users/updateMyPaword'
-        : 'http://127.0.0.1:3000/api/v1/users/updateMe';
+        ? '/api/v1/users/updateMyPaword'
+        : '/api/v1/users/updateMe';
+
+        // Locally testing
+        // ? 'http://127.0.0.1:3000/api/v1/users/updateMyPaword'
+        // : 'http://127.0.0.1:3000/api/v1/users/updateMe';
         
         const res = await axios({
             method: 'PATCH',            // lowercase is also supported
-            url: 'http://127.0.0.1:3000/api/v1/users/updateMe',
+            url,                                                                    //: 'http://127.0.0.1:3000/api/v1/users/updateMe',
             data
         });
 

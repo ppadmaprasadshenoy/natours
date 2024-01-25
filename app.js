@@ -8,6 +8,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
+const compression = require('compression');
 
 const globalErrorHandler = require('./controllers/errorControllers')
 
@@ -67,6 +68,9 @@ const limiter = rateLimit({
     windowMs: 60 * 60 * 1000,                         // 100 requests in 1 hour from same IP is allowed
     message: 'Too many requests from same IP. Please try after an hour.'
 });
+
+app.use(compression());
+
 app.use('/api', limiter);
 
 // Body parser, reading data from body into req.body
